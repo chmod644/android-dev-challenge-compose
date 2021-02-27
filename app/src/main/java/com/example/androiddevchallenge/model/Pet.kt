@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge.model
 
 data class Pet(
+    val id: Int,
     val name: String,
     val age: Int
 )

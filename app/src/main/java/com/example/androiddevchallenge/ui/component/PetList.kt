@@ -15,39 +15,53 @@
  */
 package com.example.androiddevchallenge.ui.component
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.Pet
+import com.example.androiddevchallenge.util.PetResource
 
 @Composable
-fun PetList(pets: List<Pet>) {
-    Column {
+fun PetList(onClickPet: (Pet) -> Unit) {
+    val pets = PetResource.pets
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
         pets.forEach {
-            PetRow(it)
+            PetRow(it, onClickPet)
         }
     }
 }
 
 @Composable
-fun PetRow(pet: Pet) {
-    Text(pet.name)
+fun PetRow(pet: Pet, onClickPet: (Pet) -> Unit) {
+    val TAG = "PetRow"
+    ClickableText(
+        text = AnnotatedString(pet.name),
+        onClick = {
+            Log.d(TAG, "PetRow: pet is ${pet}")
+            onClickPet(pet)
+        }
+    )
 }
 
 @Preview("Pet list", widthDp = 360, heightDp = 640)
 @Composable
 fun PreviewList() {
-    val pets = mutableListOf<Pet>()
-    pets.add(Pet("Lucky", 3))
-    pets.add(Pet("Lucky", 3))
-    pets.add(Pet("Lucky", 3))
-    PetList(pets)
+    PetList {}
 }
 
 @Preview("Pet row", widthDp = 360, heightDp = 640)
 @Composable
 fun PreviewRow() {
-    val pet = Pet("Lucky", 3)
-    PetRow(pet = pet)
+    val pet = Pet(1, "Lucky", 3)
+    PetRow(pet = pet) {}
 }

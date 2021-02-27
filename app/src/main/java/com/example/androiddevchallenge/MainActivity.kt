@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
@@ -23,7 +24,12 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.*
+import com.example.androiddevchallenge.ui.component.PetDetail
+import com.example.androiddevchallenge.ui.component.PetList
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.util.PetResource
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +45,23 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
+    val TAG = "MyApp"
     Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+        val navController = rememberNavController()
+        NavHost(navController, startDestination = "list") {
+            composable("list") {
+                PetList {
+                    Log.d(TAG, "MyApp: pet is $it")
+                    navController.navigate("detail/${it.id}")
+                }
+            }
+            composable(
+                "detail/{id}",
+                arguments = listOf(navArgument("id") { type = NavType.IntType })
+            ) {
+                PetDetail(id = it.arguments!!.getInt("id"))
+            }
+        }
     }
 }
 
