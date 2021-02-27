@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
@@ -47,13 +46,11 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
-    val TAG = "MyApp"
     Surface(color = MaterialTheme.colors.background) {
         val navController = rememberNavController()
         NavHost(navController, startDestination = "list") {
             composable("list") {
                 PetList {
-                    Log.d(TAG, "MyApp: pet is $it")
                     navController.navigate("detail/${it.id}")
                 }
             }
@@ -65,10 +62,6 @@ fun MyApp() {
             }
         }
     }
-}
-
-fun composable(s: String, function: () -> Unit) {
-
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.util.PetResource
 
-
 @Composable
 fun PetDetail(id: Int) {
     val pet = PetResource.findById(id)

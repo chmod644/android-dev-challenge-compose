@@ -15,7 +15,6 @@
  */
 package com.example.androiddevchallenge.ui.component
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.ClickableText
@@ -42,11 +41,9 @@ fun PetList(onClickPet: (Pet) -> Unit) {
 
 @Composable
 fun PetRow(pet: Pet, onClickPet: (Pet) -> Unit) {
-    val TAG = "PetRow"
     ClickableText(
         text = AnnotatedString(pet.name),
         onClick = {
-            Log.d(TAG, "PetRow: pet is ${pet}")
             onClickPet(pet)
         }
     )
