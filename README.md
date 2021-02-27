@@ -4,17 +4,15 @@
 
 ## :scroll: Description
 
-Submission
+Result
 of [android/android\-dev\-challenge\-compose: Template repository for the Jetpack Compose \#AndroidDevChallenge](https://github.com/android/android-dev-challenge-compose)
 
 ## :bulb: Motivation and Context
 
-<!--- Optionally point readers to interesting parts of your submission. -->
-<!--- What are you especially proud of? -->
+Minimum output.
 
 ## :camera_flash: Screenshots
 
-<!-- You can add more screenshots here if you like -->
 <img src="/results/screenshot_1.png" width="260">
 &emsp;<img src="/results/screenshot_2.png" width="260">
 
