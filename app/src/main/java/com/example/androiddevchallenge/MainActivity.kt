@@ -24,7 +24,11 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.ui.component.PetDetail
 import com.example.androiddevchallenge.ui.component.PetList
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -61,6 +65,10 @@ fun MyApp() {
             }
         }
     }
+}
+
+fun composable(s: String, function: () -> Unit) {
+
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
